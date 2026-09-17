@@ -208,12 +208,6 @@ lesco-meter-analyzer/
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🏛️ Utility Compliance & Industry Context
 
 Designed in accordance with Pakistan power distribution standards (NEPRA / PEPCO guidelines) for automated meter data management, feeder energy auditing, and anti-theft revenue protection.
