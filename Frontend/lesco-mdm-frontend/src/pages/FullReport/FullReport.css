@@ -1,0 +1,1144 @@
+/* =========================================
+   FULL REPORT PAGE
+========================================= */
+
+.full-report-page {
+  /* sticky layout: page fills the viewport, only the content column scrolls.
+     Previously min-height:100vh let the whole document scroll, which put a
+     second scrollbar on the page and shifted the header actions 15px left
+     relative to the pages that did this correctly. */
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #eef3fb;
+  color: #000000;
+  font-family: inherit;
+}
+
+
+/* =========================================
+   REPORT LAYOUT
+========================================= */
+
+.full-report-layout {
+  min-height: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex: 1;
+
+  background: #eef3fb;
+}
+
+
+
+
+
+/* =========================================
+   FULL REPORT CONTENT
+========================================= */
+
+.full-report-content {
+  scrollbar-gutter: stable;   /* keeps the header actions on the same x across tabs */
+  flex: 1;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: 18px 24px 30px;
+
+  background: #eef3fb;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.report-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.report-eyebrow {
+  margin: 0 0 5px;
+
+  color: #555555;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+}
+
+.report-page-title {
+  margin: 0;
+
+  color: #000000;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+
+.report-page-description {
+  margin: 6px 0 0;
+
+  color: #333333;
+
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+
+/* =========================================
+   EXPORT BUTTON
+========================================= */
+
+.report-export-button {
+  min-width: 64px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 2px;
+  padding: 0 11px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #006fca;
+  border-radius: 5px;
+
+  background: #0878c9;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.report-export-button:hover {
+  background: #056db9;
+  border-color: #056db9;
+}
+
+.report-export-button:active {
+  transform: scale(0.98);
+}
+
+.report-export-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+
+/* =========================================
+   SUMMARY CARDS
+   STATE A — 5 CARDS
+========================================= */
+
+.report-summary-grid {
+  display: grid;
+
+  /* 7 cards: meters, total breaks, affected meters, aligns,
+     low coverage, needs review, suspicious */
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    repeat(6, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+.report-summary-card {
+  min-height: 76px;
+
+  box-sizing: border-box;
+
+  padding: 12px 13px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ef;
+  border-radius: 5px;
+
+  box-shadow: 0 1px 5px rgba(25, 65, 100, 0.035);
+}
+
+.summary-label {
+  color: #222222;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.25px;
+  text-transform: none;
+}
+
+.summary-value {
+  margin-top: 6px;
+
+  color: #000000;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+
+/* =========================================
+   OVERVIEW GRID
+   STATE A:
+   NEEDS ATTENTION
+   BREAK RESOLUTION
+   LONGEST BREAKS
+========================================= */
+
+.report-overview-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr)
+    minmax(0, 1.05fr);
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+
+/* =========================================
+   DATA CARDS
+========================================= */
+
+.report-data-card {
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ef;
+  border-radius: 5px;
+
+  box-shadow: 0 1px 5px rgba(25, 65, 100, 0.035);
+}
+
+.report-overview-grid .report-data-card {
+  min-height: 183px;
+
+  padding: 14px;
+}
+
+.report-card-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.report-card-eyebrow {
+  margin: 0 0 4px;
+
+  color: #555555;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.report-card-header h2 {
+  margin: 0;
+
+  color: #000000;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.report-card-description {
+  margin: 5px 0 0;
+
+  color: #333333;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   NEEDS ATTENTION
+========================================= */
+
+.attention-card {
+  padding: 14px !important;
+}
+
+.attention-list {
+  margin-top: 8px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.attention-item {
+  min-height: 34px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  padding: 8px 0;
+
+  border-bottom: 1px solid #edf1f6;
+}
+
+.attention-item:last-child {
+  border-bottom: none;
+}
+
+.attention-icon {
+  width: 14px;
+  min-width: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1px;
+
+  font-size: 20px;
+}
+
+.attention-danger .attention-icon {
+  color: #c4212b;
+}
+
+.attention-warning .attention-icon {
+  color: #d78512;
+}
+
+.attention-info .attention-icon {
+  color: #6d7887;
+}
+
+.attention-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.attention-title {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================
+   NEEDS ATTENTION
+   SMALL CONTENT-WIDTH BOXES
+========================================= */
+
+.attention-meter {
+  width: fit-content;
+  max-width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+
+  margin-top: 2px;
+  padding: 2px 8px;
+
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 2px;
+
+  background: #ffffff;
+
+  color: #555555;
+
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.35;
+
+  box-shadow: 0 1px 4px rgba(25, 65, 100, 0.22);
+
+  cursor: pointer;
+}
+
+/* supporting line for attention items that are not a link to a meter */
+.attention-note {
+  display: block;
+  margin-top: 3px;
+  color: #7a8ba0;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+.attention-meter:hover {
+  box-shadow: 0 2px 6px rgba(25, 65, 100, 0.28);
+}
+
+
+/* =========================================
+   BREAK RESOLUTION DONUT
+========================================= */
+
+.gap-resolution-card {
+  padding: 14px !important;
+}
+
+.donut-chart-area {
+  height: 125px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.donut-chart {
+  width: 160px;
+  height: 160px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #149b8d 0deg 240deg,
+      #c3212b 240deg 360deg
+
+    );
+}
+
+.donut-chart::before {
+  content: "";
+
+  width: 85px;
+  height: 85px;
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+.donut-center {
+  /* centred inside .donut-svg-wrap; pointer-events off so it never blocks
+     the arcs underneath from receiving hover */
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 26px;
+}
+
+.donut-center em {
+  margin-top: 2px;
+  color: #8496ab;
+  font-size: 9px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.donut-center strong {
+  color: #000000;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.donut-center span {
+  margin-top: 3px;
+
+  color: #555555;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 40px;
+
+  color: #333333;
+
+  font-size: 13px;
+}
+
+.chart-legend span {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+}
+
+.review-dot {
+  background: #c3212b;
+}
+
+/* ---- SVG donut with hoverable segments ---- */
+.donut-svg-wrap {
+  position: relative;
+  width: 165px;
+  height: 165px;
+}
+
+.donut-svg {
+  width: 100%;
+  height: 100%;
+  /* NOTE: no rotate() here. The circumference is 100 (r = 15.9155) and each
+     arc uses stroke-dashoffset = 25 - offset, which already places the first
+     segment at 12 o'clock. Adding a rotation on top shifts every arc by 90deg. */
+}
+
+.donut-track {
+  fill: none;
+  stroke: #eef2f7;
+  stroke-width: 5.2;
+}
+
+.donut-seg {
+  fill: none;
+  stroke-width: 5.2;
+  cursor: pointer;
+  transition: stroke-width 0.15s ease, opacity 0.15s ease;
+}
+
+.donut-seg:hover {
+  stroke-width: 6.6;
+}
+
+.donut-seg.dimmed {
+  opacity: 0.3;
+}
+
+.legend-item {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.legend-item.active {
+  color: #0b2a4a;
+  font-weight: 600;
+}
+
+.low-dot {
+  background: #c07a16;
+}
+
+.outage-dot {
+  background: #149b8d;
+}
+
+
+/* =========================================
+   LONGEST BREAKS
+========================================= */
+
+.longest-gaps-card {
+  padding: 14px !important;
+  overflow: hidden;
+}
+
+.longest-gaps-list {
+  margin-top: 11px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+/* =========================================
+   LONGEST BREAKS
+   SIMPLE GRAPH ROW
+   NO OUTER RECTANGLE
+========================================= */
+
+.longest-gap-row {
+  width: 100%;
+
+  display: grid;
+
+  /* value column must fit the widest label ("464.25h"); it was 29px, which
+     pushed the row outside the card. minmax(0,1fr) lets the bar shrink -
+     a plain 1fr has an auto minimum and refuses to. */
+  grid-template-columns: 74px minmax(0, 1fr) 54px;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.longest-gap-row:hover {
+  background: transparent;
+}
+
+.longest-gap-meter {
+  overflow: hidden;
+
+  color: #222222;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.longest-gap-bar-wrapper {
+  height: 9px;
+  min-width: 0;
+
+  overflow: hidden;
+
+  border-radius: 1px;
+
+  background: #e6eaf0;
+}
+
+.longest-gap-bar {
+  height: 100%;
+
+  border-radius: 1px;
+
+  background: #bf2028;
+}
+
+.longest-gap-hours {
+  color: #222222;
+
+  font-size: 12px;
+
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================
+   METER ENTRIES / GAPS TABLE
+========================================= */
+
+.report-entries-card {
+  width: 100%;
+
+  padding: 0;
+
+  margin-bottom: 10px;
+}
+
+.report-entries-card .report-card-header {
+  min-height: 45px;
+
+  padding: 10px 12px;
+
+  align-items: center;
+
+  border-bottom: 1px solid #dce5ef;
+}
+
+.table-card-header h2 {
+  color: #000000;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   TABLE TOOLS
+========================================= */
+
+.table-tools {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.table-search {
+  width: 165px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d7e1ec;
+  border-radius: 4px;
+
+  background: #ffffff;
+}
+
+.table-search span {
+  margin-left: 7px;
+
+  color: #3f3c3c;
+
+  font-size: 16px;
+}
+
+.table-search input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 7px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #000000;
+
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.table-search input::placeholder {
+  color: #777777;
+}
+
+.filter-button {
+  height: 25px;
+
+  padding: 0 8px;
+
+  border: 1px solid #d7e1ec;
+  border-radius: 4px;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  border-color: #1687e8;
+
+  color: #1687e8;
+  background: #f5f9fd;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.report-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.report-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+
+  table-layout: fixed;
+}
+
+.report-table thead {
+  background: #e9edf3;
+}
+
+.report-table th {
+  height: 30px;
+
+  padding: 0 8px;
+
+  border-bottom: 1px solid #d8e1eb;
+
+  color: #111111;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.report-table td {
+  height: 33px;
+
+  padding: 0 8px;
+
+  border-bottom: 1px solid #edf1f6;
+
+  color: #222222;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.report-table tbody tr:hover {
+  background: #f8fbfe;
+}
+
+.report-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   TABLE STATUS BADGES
+========================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 3px 6px;
+
+  border-radius: 10px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+.status-badge::before {
+  content: "";
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+}
+
+.status-review {
+  background: #fbe9eb;
+
+  color: #b42029;
+}
+
+.status-review::before {
+  background: #c3212b;
+}
+
+.status-outage {
+  background: #e5f5f2;
+
+  color: #138d80;
+}
+
+.status-outage::before {
+  background: #149b8d;
+}
+
+
+/* =========================================
+   EMPTY TABLE
+========================================= */
+
+.empty-table {
+  height: 55px !important;
+
+  color: #555555 !important;
+
+  text-align: center !important;
+}
+
+
+/* =========================================
+   TABLE FOOTER
+========================================= */
+
+.report-table-footer {
+  min-height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 12px;
+
+  color: #0f0e0e;
+
+  font-size: 13px;
+}
+
+.report-table-footer .show-all-button {
+  height: 25px;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   SHOW ALL BUTTON
+========================================= */
+
+.show-all-button {
+  height: 27px;
+
+  padding: 0 9px;
+
+  border: 1px solid #d5dfe9;
+  border-radius: 4px;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: inherit;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.show-all-button:hover {
+  border-color: #1687e8;
+
+  background: #f2f7fd;
+
+  color: #1687e8;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1150px) {
+
+  .report-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .report-overview-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .longest-gaps-card {
+    grid-column: span 2;
+  }
+
+}
+
+
+@media (max-width: 950px) {
+
+  .report-sidebar {
+    width: 210px;
+    min-width: 210px;
+  }
+
+  .full-report-content {
+    padding: 20px;
+  }
+
+  .report-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .report-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .longest-gaps-card {
+    grid-column: auto;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .report-sidebar {
+    width: 190px;
+    min-width: 190px;
+  }
+
+  .sidebar-nav-item {
+    font-size: 11px;
+  }
+
+  .sidebar-action-button {
+    font-size: 10px;
+  }
+
+  .report-page-header {
+    gap: 15px;
+  }
+
+  .report-page-title {
+    font-size: 22px;
+  }
+
+  .report-summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .report-export-button {
+    min-width: 65px;
+    height: 32px;
+
+    font-size: 10px;
+  }
+
+  .table-tools {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .table-search {
+    width: 140px;
+  }
+
+  .full-report-content {
+    padding: 17px 14px 25px;
+  }
+
+}
+
+
+/* per-meter summary table */
+.fr-msn-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: #1565c0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fr-msn-link:hover { text-decoration: underline; }
+
+.fr-count { font-variant-numeric: tabular-nums; }
+.fr-count.bad { color: #b12832; font-weight: 700; }
+
+.fr-count.warn { color: #96600e; font-weight: 700; }
+
+.fr-priority {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.fr-priority.inspect { background: #fdeaea; color: #a3161f; }
+.fr-priority.review  { background: #fdf2e2; color: #96600e; }
+.fr-priority.no-action { background: #eef2f7; color: #5a6b80; }

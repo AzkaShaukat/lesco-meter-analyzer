@@ -1,0 +1,91 @@
+/* =========================================================
+   PAGE HEADER ACTIONS — one layout + button style for every tab.
+
+   Every report page ends its header with the same right-aligned cluster:
+       [ ⛃ Filters ▾ ] [ ↓ Export ]
+   Filters is the white secondary button (see FilterButton.css); Export is the
+   blue primary. Pages previously each had their own export class with slightly
+   different sizes and colours, so the header shifted between tabs.
+========================================================= */
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.page-export-button {
+  min-width: 64px;
+  height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 0 11px;
+  box-sizing: border-box;
+
+  border: 1px solid #006fca;
+  border-radius: 5px;
+
+  background: #0878c9;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.page-export-button:hover {
+  background: #056db9;
+  border-color: #056db9;
+}
+
+/* secondary action (Back / Overview) - sits left of Filters, same height */
+.page-back-button {
+  height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 0 11px;
+  box-sizing: border-box;
+
+  border: 1px solid #cfdae8;
+  border-radius: 5px;
+
+  background: #ffffff;
+  color: #1f3b63;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.page-back-button:hover { background: #f3f7fc; }
+
+/* match the Filters button to the same 32px height as its neighbours */
+.page-header-actions .fb-button {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+
+/* NOTE: `scrollbar-gutter: stable` is set in each page's own stylesheet rather
+   than here - a rule in this file has the same specificity but loses on load
+   order, so it silently applied to only some pages. */

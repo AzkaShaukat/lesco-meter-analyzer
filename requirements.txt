@@ -1,0 +1,21 @@
+# Python packages the analysis engine and the web dashboard need.
+# On a new PC:  pip install -r requirements.txt
+#
+# Keep this list minimal. It is downloaded over the office network on a new
+# PC's first run, so every extra package is time spent staring at a black
+# window. Nothing here is optional - all six are imported by backend\ .
+
+pandas==2.3.3
+numpy==2.4.0
+openpyxl==3.1.5
+fastapi==0.141.1
+uvicorn==0.52.1
+python-multipart==0.0.32
+
+# NOT required, deliberately left out:
+#   matplotlib  - was only ever used by one-off scripts that drew diagrams for
+#                 the written report. Nothing in backend\ imports it, and it
+#                 pulls in pillow, fonttools, contourpy and kiwisolver behind
+#                 it (~35 MB), which made a new PC's first run far slower than
+#                 it needed to be. Install it by hand if you ever redraw those
+#                 figures:  pip install matplotlib

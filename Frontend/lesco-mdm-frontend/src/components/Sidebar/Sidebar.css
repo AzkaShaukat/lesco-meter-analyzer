@@ -1,0 +1,382 @@
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  width: 253px;
+  min-width: 253px;
+
+  /* Page ke content ke sath end tak stretch */
+  height: auto;
+  min-height: 100%;
+
+  background: #071a33;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  padding: 40px 20px 18px;
+
+  align-self: stretch;
+}
+
+
+/* =========================================================
+   REPORT SECTION
+========================================================= */
+
+.sidebar-section {
+  width: 100%;
+}
+
+.sidebar-section-title {
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.7px;
+
+  color: #8da0bd;
+
+  margin: 0 0 12px 12px;
+}
+
+
+/* =========================================================
+   SIDEBAR ITEMS
+========================================================= */
+
+.sidebar-item {
+  width: 100%;
+  height: 43px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  border-radius: 7px;
+
+  padding: 0 14px;
+
+  margin-bottom: 6px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  color: #91a4c0;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.sidebar-item:hover {
+  background: rgba(30, 145, 235, 0.12);
+
+  color: #dce9f8;
+}
+
+
+/* =========================================================
+   ACTIVE ITEM
+========================================================= */
+
+.sidebar-item.active {
+  background: #168be5;
+
+  color: #ffffff;
+
+  font-weight: 600;
+}
+
+.sidebar-item.active:hover {
+  background: #168be5;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   ICONS
+========================================================= */
+
+.sidebar-icon {
+  width: 17px;
+  min-width: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #91a4c0;
+
+  font-size: 15px;
+
+  line-height: 1;
+}
+
+.sidebar-item.active .sidebar-icon {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   OVERVIEW ICON
+========================================================= */
+
+.overview-icon {
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   ITEM TEXT
+========================================================= */
+
+.sidebar-item-text {
+  white-space: nowrap;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   NEW ANALYSIS
+   6TH ITEM — PEAK LOAD KE IMMEDIATELY BAAD
+========================================================= */
+
+.sidebar-new-analysis {
+  width: 100%;
+  height: 40px;
+
+  border: 1px solid #238fe2;
+
+  border-radius: 7px;
+
+  background: #168be5;
+
+  color: #ffffff;
+
+  padding: 0 14px;
+
+  margin-top: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 13px;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.12s ease;
+}
+
+.sidebar-new-analysis:hover {
+  background: #0f7ed3;
+
+  border-color: #0f7ed3;
+}
+
+.sidebar-new-analysis:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================================================
+   PLUS ICON
+========================================================= */
+
+.sidebar-new-icon {
+  width: 17px;
+  min-width: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  margin-top: -1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
+  .sidebar-item {
+    font-size: 12px;
+
+    gap: 11px;
+  }
+
+
+  .sidebar-new-analysis {
+    font-size: 12px;
+
+    gap: 11px;
+  }
+
+
+  .sidebar-section-title {
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   PHONES AND SMALL TABLETS - SIDEBAR BECOMES A DRAWER
+   =========================================================
+   Below this width the sidebar cannot stay beside the content. It used to
+   simply get narrower (253 -> 220 -> 190px), which on a 375px phone still ate
+   half the screen and pushed each page's own Filters/Export buttons off the
+   right edge - and because the layout clips overflow, there was no way to
+   scroll to them at all.
+
+   So here it leaves the flow entirely and slides in over the page, opened by
+   the TopBar's menu button and closed by the scrim, Escape, or picking a
+   section.
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1200;
+
+    width: 252px;
+    min-width: 252px;
+    height: 100%;
+    min-height: 0;
+
+    padding: 22px 16px 18px;
+
+    /* parked off-screen; .is-open slides it in */
+    transform: translateX(-100%);
+    transition: transform 0.22s ease;
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    box-shadow: 2px 0 22px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 1150;
+    background: rgba(3, 10, 20, 0.62);
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+  }
+
+  /* Comfortable touch targets - these are finger-sized, not cursor-sized. */
+  .sidebar-item,
+  .sidebar-new-analysis {
+    min-height: 46px;
+    padding: 0 12px;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .sidebar-icon,
+  .sidebar-new-icon {
+    width: 20px;
+    min-width: 20px;
+    font-size: 17px;
+  }
+
+  .sidebar-section-title {
+    font-size: 12px;
+  }
+}
+
+/* The scrim only exists for the drawer; never show it on desktop, where the
+   sidebar is a permanent column. */
+@media (min-width: 761px) {
+  .sidebar-scrim {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+}
+/* =========================================================
+   LOCK ICON – aligned to the far right
+========================================================= */
+.lock-icon {
+  margin-left: auto;        /* pushes the lock to the very right edge */
+  font-size: 14px;
+  color: #f0c674;           /* gold, visible against dark background */
+  flex-shrink: 0;           /* prevent shrinking */
+  padding-left: 8px;        /* small breathing space from the text */
+}
+
+/* Locked item styling */
+.sidebar-item.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sidebar-item.locked:hover {
+  background: transparent;
+  color: #91a4c0;
+}
+
+.sidebar-item.locked .sidebar-icon {
+  color: #91a4c0;
+}

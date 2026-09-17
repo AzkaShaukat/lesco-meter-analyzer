@@ -1,0 +1,502 @@
+/* =========================================
+   BASE TOPBAR
+========================================= */
+
+.topbar {
+  height: 68px;
+  width: 100%;
+  padding: 0 26px;
+
+  display: flex;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   LANDING PAGE TOPBAR
+   ORIGINAL DARK NAVY
+========================================= */
+
+.topbar-landing {
+  justify-content: space-between;
+
+  background: #050b1c;
+  border-bottom: 1px solid #1c2940;
+
+  box-shadow: none;
+}
+
+.topbar-landing .topbar-brand {
+  color: #ffffff;
+}
+
+.topbar-landing .brand-title {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   FULL REPORT TOPBAR
+   SAME NAVY AS SIDEBAR
+========================================= */
+
+.topbar-report {
+  justify-content: space-between;
+
+  background:  #07172f;
+  border-bottom: 1px solid #cbd8e6;
+
+  box-shadow: 0 1px 5px rgba(15, 45, 75, 0.08);
+}
+
+.topbar-report .topbar-brand {
+  color: #ffffff;
+}
+
+.topbar-report .brand-title {
+  color: #ffffff;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.topbar-search {
+  width: 350px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: 15px;
+
+  border: 1px solid #334863;
+  border-radius: 6px;
+
+  background: #102443;
+
+  box-sizing: border-box;
+}
+
+.search-icon {
+  margin-left: 11px;
+
+  color: #8fa1b8;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+.topbar-search input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 10px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.topbar-search input::placeholder {
+  color: #8293aa;
+}
+
+
+/* Search focus */
+
+.topbar-search:focus-within {
+  border-color: #1687e8;
+  background: #102443;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.topbar-icon-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* =========================================
+   LANDING ICONS
+========================================= */
+
+.topbar-landing .topbar-icon-button {
+  color: #d7dfeb;
+}
+
+.topbar-landing .topbar-icon-button:hover {
+  background: #17233a;
+  color: #ffffff;
+}
+
+
+/* =========================================
+   FULL REPORT ICONS
+========================================= */
+
+.topbar-report .topbar-icon-button {
+  color: #aeb9ca;
+}
+
+.topbar-report .topbar-icon-button:hover {
+  background: #102443;
+  color: #ffffff;
+}
+
+
+/* =========================================
+   ICONS
+========================================= */
+
+.notification-icon,
+.settings-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+/* =========================================
+   LANDING PROFILE
+========================================= */
+
+.topbar-landing .profile-button {
+  border: 1px solid #68788e;
+
+  background: #17243a;
+
+  color: #ffffff;
+}
+
+.topbar-landing .profile-button:hover {
+  border-color: #1687e8;
+}
+
+
+/* =========================================
+   FULL REPORT PROFILE
+========================================= */
+
+.topbar-report .profile-button {
+  border: 1px solid #3b4d66;
+
+  background: #1b2a40;
+
+  color: #d7dfeb;
+}
+
+.topbar-report .profile-button:hover {
+  border-color: #1687e8;
+
+  background: #20344f;
+}
+
+
+/* =========================================
+   PROFILE LETTER
+========================================= */
+
+.profile-placeholder {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+  .topbar {
+    padding: 0 18px;
+  }
+
+  .topbar-search {
+    width: 280px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .topbar-search {
+    width: 200px;
+
+    margin-right: 10px;
+  }
+
+  .topbar-landing .brand-title {
+    font-size: 18px;
+  }
+
+  .topbar-report .brand-title {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================
+   MENU BUTTON (phones only)
+   Opens the sidebar drawer - see Sidebar.css.
+   Hidden above the breakpoint, where the sidebar is a permanent column.
+========================================= */
+
+.topbar-menu-button {
+  display: none;          /* shown by the phone media query below */
+
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  flex: 0 0 auto;
+
+  padding: 0;
+  border: 1px solid #22344f;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.topbar-menu-button:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.menu-bars {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 13px;
+}
+
+.menu-bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #dbe5f2;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-bars span:nth-child(1) { top: 0; }
+.menu-bars span:nth-child(2) { top: 5.5px; }
+.menu-bars span:nth-child(3) { top: 11px; }
+
+/* becomes an X while the drawer is open */
+.menu-bars.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.menu-bars.is-open span:nth-child(2) { opacity: 0; }
+.menu-bars.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* the short brand name, swapped in only where the full one will not fit */
+.brand-title-short {
+  display: none;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+}
+
+
+/* =========================================
+   PHONES
+   The full title wrapped to two lines and burst the 68px bar, so it is
+   replaced by the short one and the oversized logo is brought down to fit.
+========================================= */
+
+@media (max-width: 760px) {
+  .topbar {
+    height: 58px;
+    padding: 0 12px;
+    gap: 4px;
+  }
+
+  .topbar-menu-button {
+    display: inline-flex;
+  }
+
+  .topbar-brand {
+    min-width: 0;         /* let it shrink instead of pushing the actions out */
+    flex: 0 1 auto;
+    overflow: hidden;
+
+    /* the brand is a plain div with no layout of its own, so at 320px the
+       logo and the title were laid out as inline content and the text
+       wrapped underneath, overlapping the bar's bottom edge */
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .brand-logo-image {
+    height: 34px;
+    margin-right: 8px;
+  }
+
+  /* full title out, short title in - both selectors are needed because the
+     landing/report variants each set their own .brand-title font size */
+  .topbar .brand-title,
+  .topbar-landing .brand-title,
+  .topbar-report .brand-title {
+    display: none;
+  }
+
+  .brand-title-short {
+    display: inline;
+  }
+
+  .topbar-search {
+    width: auto;
+    flex: 1 1 110px;
+    min-width: 0;
+    margin-right: 6px;
+  }
+
+  .topbar-actions {
+    flex: 0 0 auto;
+  }
+
+  .help-icon {
+    font-size: 26px;
+  }
+}
+
+/* Very small phones (iPhone SE and similar, 320px).
+   Menu + logo + wordmark + search + help will not all fit, so the wordmark
+   goes - the logo still identifies the app, and the search is worth more. */
+@media (max-width: 420px) {
+  .topbar {
+    padding: 0 8px;
+  }
+
+  .brand-title-short {
+    display: none;
+  }
+
+  .brand-logo-image {
+    height: 30px;
+    margin-right: 0;
+  }
+
+  .topbar-menu-button {
+    margin-right: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-bars span {
+    transition: none;
+  }
+}
+
+/* =========================================
+   BRAND LOGO IMAGE
+========================================= */
+
+.brand-logo-image {
+  height: 55px;
+  width: auto;
+  margin-right: 12px;
+  margin-top: 0px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* =========================================
+   HELP ICON
+========================================= */
+
+.help-icon {
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Landing page help icon */
+.topbar-landing .help-icon {
+  color: #d7dfeb;
+}
+
+/* Report page help icon */
+.topbar-report .help-icon {
+  color: #aeb9ca;
+}
+
+/* Hover state already handled by .topbar-icon-button:hover */

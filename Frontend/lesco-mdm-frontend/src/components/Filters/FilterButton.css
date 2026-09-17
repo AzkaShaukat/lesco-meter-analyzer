@@ -1,0 +1,164 @@
+/* =========================================================
+   FILTER BUTTON — one control, identical on every page.
+   Sits next to the Export button in each page header.
+========================================================= */
+
+.fb-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.fb-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 1px solid #cfdae8;
+  border-radius: 7px;
+  background: #fff;
+  color: #1f3b63;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.fb-button:hover { background: #f3f7fc; }
+
+.fb-button.open,
+.fb-button.has-active {
+  border-color: #1687e8;
+  background: #f2f8fe;
+}
+
+.fb-icon { font-size: 12px; opacity: 0.75; }
+
+.fb-caret { font-size: 9px; opacity: 0.6; }
+
+.fb-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #1687e8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ---------------- panel ---------------- */
+
+.fb-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 60;
+  width: 264px;
+  padding: 13px 14px 11px;
+  border: 1px solid #d3dded;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(20, 40, 70, 0.14);
+  text-align: left;
+}
+
+.fb-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.fb-panel-head strong {
+  font-size: 12px;
+  font-weight: 700;
+  color: #152a43;
+}
+
+.fb-clear {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #1565c0;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fb-clear:hover { text-decoration: underline; }
+
+.fb-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fb-field-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #7a8ba0;
+  text-transform: uppercase;
+}
+
+.fb-field select,
+.fb-number input {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid #d5dfeb;
+  border-radius: 6px;
+  background: #fff;
+  color: #24384f;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.fb-field select:focus,
+.fb-number input:focus {
+  outline: none;
+  border-color: #1687e8;
+  box-shadow: 0 0 0 2px rgba(22, 135, 232, 0.14);
+}
+
+.fb-number {
+  position: relative;
+  display: block;
+}
+
+.fb-number em {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-style: normal;
+  font-size: 11px;
+  color: #98a6b8;
+  pointer-events: none;
+}
+
+.fb-number input { padding-right: 30px; }
+
+.fb-result {
+  margin-top: 11px;
+  padding-top: 9px;
+  border-top: 1px solid #edf1f7;
+  font-size: 11px;
+  color: #7a8ba0;
+}
+
+.fb-result strong { color: #152a43; }
+
+@media (max-width: 620px) {
+  .fb-panel { width: 232px; }
+}

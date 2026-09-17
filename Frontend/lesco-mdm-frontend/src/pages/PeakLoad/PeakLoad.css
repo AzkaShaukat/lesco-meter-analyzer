@@ -1,0 +1,550 @@
+/* =========================================================
+   PEAK LOAD
+   Sticky-sidebar layout: the page fills the viewport and only
+   the content column scrolls. (Do not add height/overflow rules
+   for these classes in another stylesheet - a stray block in
+   MeterDetail.css previously clamped this page and broke scrolling.)
+========================================================= */
+
+.peak-load-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #eef3f9;
+  color: #122033;
+}
+
+.pl-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pl-content {
+  scrollbar-gutter: stable;   /* keeps the header actions on the same x across tabs */
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 18px 24px 30px;
+  background: #eef3f9;
+}
+
+/* ---------------- header ---------------- */
+
+.pl-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.pl-page-heading h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #122a47;
+}
+
+.pl-page-heading p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #667b96;
+}
+
+.pl-heading-actions { display: flex; gap: 8px; }
+
+.pl-export-button {
+  padding: 9px 15px;
+  border: 1px solid #cfdae8;
+  border-radius: 7px;
+  background: #fff;
+  color: #1f3b63;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pl-export-button:hover { background: #f3f7fc; }
+
+.pl-meter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #d2dbe7;
+  border-radius: 18px;
+  background: #eef2f8;
+  color: #3d4d62;
+  font-size: 11.5px;
+}
+
+.pl-meter-pill button {
+  border: 0;
+  background: transparent;
+  color: #687789;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pl-search-error {
+  margin: -2px 0 12px;
+  padding: 9px 12px;
+  border: 1px solid #f0c5c5;
+  background: #fff4f4;
+  color: #a33b3b;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* ---------------- cards ---------------- */
+
+.pl-card {
+  background: #fff;
+  border: 1px solid #d8e1ec;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(25, 45, 75, 0.04);
+}
+
+.pl-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.pl-kpi-card {
+  background: #fff;
+  border: 1px solid #d8e1ec;
+  border-left: 4px solid #1687e8;
+  border-radius: 8px;
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pl-kpi-card span {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #7a8ba0;
+}
+
+.pl-kpi-card strong {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #122a47;
+}
+
+.pl-kpi-card strong small {
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a8ba0;
+}
+
+.pl-kpi-card em {
+  font-style: normal;
+  font-size: 10.5px;
+  color: #8496ab;
+}
+
+/* ---------------- chart layout ---------------- */
+
+.pl-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.pl-chart,
+.pl-section {
+  padding: 15px 17px 17px;
+  margin-bottom: 0;
+}
+
+.pl-section { margin-bottom: 16px; }
+
+.pl-chart h2,
+.pl-section h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #152a43;
+}
+
+.pl-chart p,
+.pl-section-note {
+  margin: 4px 0 13px;
+  font-size: 11px;
+  color: #7a8ba0;
+  line-height: 1.5;
+}
+
+.pl-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pl-tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: #5a6b80;
+  background: #eef2f7;
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.pl-nodata {
+  padding: 22px 0;
+  text-align: center;
+  color: #98a6b8;
+  font-size: 11.5px;
+}
+
+/* ---------------- horizontal bars ---------------- */
+
+.pl-hbars { display: flex; flex-direction: column; gap: 7px; }
+
+.pl-hbar-row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) 74px;
+  align-items: center;
+  gap: 9px;
+}
+
+.pl-hbar-row.clickable { cursor: pointer; }
+.pl-hbar-row.clickable:hover .pl-hbar-label { color: #1565c0; }
+.pl-hbar-row.clickable:hover .pl-hbar-fill { filter: brightness(1.08); }
+
+.pl-hbar-label {
+  font-size: 11px;
+  color: #24384f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pl-hbar-track {
+  height: 13px;
+  background: #eef2f7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pl-hbar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  transition: filter 0.15s ease;
+}
+
+.pl-hbar-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: #24384f;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---------------- vertical bars ---------------- */
+
+.pl-vbars-wrap { display: flex; gap: 8px; }
+
+.pl-vbars-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 9.5px;
+  color: #98a6b8;
+  text-align: right;
+  min-width: 34px;
+  padding-bottom: 16px;
+}
+
+.pl-vbars {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  border-bottom: 1px solid #e2e9f2;
+  padding-bottom: 0;
+}
+
+.pl-vbar-col {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* full-height hit area so short bars are still easy to hover */
+.pl-vbar-hit {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: default;
+}
+
+.pl-vbar {
+  width: 100%;
+  max-width: 26px;
+  border-radius: 3px 3px 0 0;
+  transition: filter 0.15s ease;
+}
+
+.pl-vbar-hit:hover .pl-vbar { filter: brightness(1.15); }
+
+.pl-vbar-label {
+  margin-top: 4px;
+  font-size: 9px;
+  color: #8496ab;
+  white-space: nowrap;
+  height: 12px;
+}
+
+/* ---------------- weekly mini table ---------------- */
+
+.pl-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 11px;
+}
+
+.pl-mini-table th {
+  text-align: left;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: #7a8ba0;
+  font-weight: 600;
+  padding: 6px 8px;
+  background: #f4f7fb;
+  border-bottom: 1px solid #e2e9f2;
+}
+
+.pl-mini-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #f0f4f9;
+  color: #24384f;
+}
+
+.pl-mini-table td.num,
+.pl-mini-table th.num { text-align: right; }
+
+/* ---------------- monthly stat strip ---------------- */
+
+.pl-month-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* one row per month, stats spread across the full card width */
+.pl-month-row {
+  display: grid;
+  grid-template-columns: auto repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 18px;
+  padding: 13px 16px;
+  border: 1px solid #e2e9f2;
+  border-left: 4px solid #c07a16;
+  border-radius: 7px;
+  background: #fcfdff;
+}
+
+.pl-month-badge {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #96600e;
+  background: #fdf2e2;
+  border-radius: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.pl-month-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pl-month-stat span {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #8496ab;
+}
+
+.pl-month-stat strong {
+  font-size: 19px;
+  font-weight: 700;
+  color: #122a47;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pl-month-stat strong small {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7a8ba0;
+}
+
+/* ---------------- paired cards in a row ---------------- */
+
+/* both cards in .pl-chart-grid stretch to the taller one; the clock then
+   centres in whatever vertical space is left instead of leaving a gap. */
+.pl-chart-grid > .pl-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.pl-clock-card .pl-clock-wrap {
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---------------- table ---------------- */
+
+.pl-table-card { padding: 4px 6px 6px; }
+
+.pl-msn-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: #1565c0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pl-msn-link:hover { text-decoration: underline; }
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 1150px) {
+  .pl-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pl-chart-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 860px) {
+  /* badge on its own line, stats 3-across underneath */
+  .pl-month-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 12px;
+  }
+  .pl-month-badge { grid-column: 1 / -1; justify-self: start; }
+}
+
+@media (max-width: 700px) {
+  .pl-content { padding: 14px; }
+  .pl-kpi-grid { grid-template-columns: minmax(0, 1fr); }
+  .pl-page-header { flex-direction: column; align-items: flex-start; }
+  .pl-hbar-row { grid-template-columns: 74px minmax(0, 1fr) 62px; }
+  .pl-month-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pl-month-stat strong { font-size: 17px; }
+}
+
+/* =========================================================
+   24-HOUR PEAK CLOCK
+========================================================= */
+
+.pl-clock-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* square container sized in JS from the `height` prop; the svg simply fills it */
+.pl-clock-box {
+  position: relative;
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.pl-clock {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pl-clock-ring {
+  fill: none;
+  stroke: #eef2f7;
+  stroke-width: 1;
+}
+
+.pl-clock-hub {
+  fill: #fbfcfe;
+  stroke: #e2e9f2;
+  stroke-width: 1;
+}
+
+/* invisible full-length pick target so empty/short hours still hover */
+.pl-clock-hit {
+  stroke: transparent;
+  stroke-width: 9;
+  cursor: pointer;
+}
+
+.pl-clock-bar {
+  stroke-width: 6.5;
+  stroke-linecap: round;
+  pointer-events: none;
+  transition: stroke-width 0.15s ease, opacity 0.15s ease;
+}
+
+.pl-clock-bar.on { stroke-width: 8.5; }
+.pl-clock-bar.off { opacity: 0.28; }
+
+.pl-clock-tick {
+  font-size: 9px;
+  font-weight: 600;
+  fill: #98a6b8;
+}
+
+.pl-clock-center {
+  position: absolute;
+  inset: 0;   /* relative to .pl-clock-box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.pl-clock-center strong {
+  font-size: 22px;
+  font-weight: 700;
+  color: #122a47;
+  line-height: 1.1;
+}
+
+.pl-clock-center span {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #8496ab;
+}

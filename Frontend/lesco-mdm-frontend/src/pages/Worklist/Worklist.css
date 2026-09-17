@@ -1,0 +1,282 @@
+/* Worklist — the "who to inspect first" screen.
+   Sticky-sidebar layout: page fills the viewport, only the content scrolls. */
+
+.wl-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #eef3f9;
+  color: #122033;
+}
+
+.wl-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.wl-content {
+  scrollbar-gutter: stable;   /* keeps the header actions on the same x across tabs */
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 18px 24px 30px;
+  background: #eef3f9;
+}
+
+/* ---------- header ---------- */
+.wl-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.wl-eyebrow {
+  margin: 0 0 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #7a8ba0;
+}
+
+.wl-header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #122a47;
+}
+
+.wl-sub {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #667b96;
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+.wl-export {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 15px;
+  border: 1px solid #cfdae8;
+  border-radius: 7px;
+  background: #fff;
+  color: #1f3b63;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.wl-export:hover { background: #f3f7fc; }
+
+/* ---------- KPI cards ---------- */
+.wl-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.wl-kpi {
+  background: #fff;
+  border: 1px solid #d8e1ec;
+  border-left-width: 4px;
+  border-radius: 8px;
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wl-kpi span {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #7a8ba0;
+}
+
+.wl-kpi strong {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #122a47;
+}
+
+.wl-kpi small { font-size: 10.5px; color: #8496ab; }
+
+.wl-kpi.inspect { border-left-color: #c3212b; }
+.wl-kpi.inspect strong { color: #c3212b; }
+.wl-kpi.review  { border-left-color: #c07a16; }
+.wl-kpi.review strong { color: #a8690f; }
+.wl-kpi.ok      { border-left-color: #0e9384; }
+.wl-kpi.neutral { border-left-color: #1687e8; }
+
+/* ---------- filters ---------- */
+.wl-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.wl-filter {
+  padding: 6px 13px;
+  border: 1px solid #cfdae8;
+  border-radius: 999px;
+  background: #fff;
+  color: #4a5f78;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.wl-filter.active {
+  background: #1f3b63;
+  border-color: #1f3b63;
+  color: #fff;
+}
+
+.wl-count { margin-left: auto; font-size: 11.5px; color: #7a8ba0; }
+
+/* ---------- table ---------- */
+.wl-table-card {
+  background: #fff;
+  border: 1px solid #d8e1ec;
+  border-radius: 8px;
+  padding: 4px 6px 6px;
+  margin-bottom: 16px;
+}
+
+.wl-score {
+  display: inline-block;
+  min-width: 34px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+}
+
+.wl-score.high { background: #fdeaea; color: #a3161f; }
+.wl-score.mid  { background: #fdf2e2; color: #96600e; }
+.wl-score.low  { background: #eef2f7; color: #5a6b80; }
+
+.wl-priority {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.wl-priority.inspect { background: #fdeaea; color: #a3161f; }
+.wl-priority.review  { background: #fdf2e2; color: #96600e; }
+.wl-priority.no-action { background: #eaf6f4; color: #0b7166; }
+
+.wl-msn-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: #1565c0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wl-msn-link:hover { text-decoration: underline; }
+
+/* ---------- signal weights panel ---------- */
+.wl-weights-card {
+  background: #fff;
+  border: 1px solid #d8e1ec;
+  border-radius: 8px;
+  padding: 15px 17px;
+  margin-bottom: 14px;
+}
+
+.wl-weights-head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #152a43;
+}
+
+.wl-weights-head p {
+  margin: 4px 0 12px;
+  font-size: 11.5px;
+  color: #7a8ba0;
+  line-height: 1.5;
+}
+
+.wl-weight-row {
+  display: grid;
+  grid-template-columns: 28px 190px minmax(0, 1fr) 150px;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.wl-tier {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 4px;
+}
+
+.wl-tier.tier-1a { background: #fdeaea; color: #a3161f; }
+.wl-tier.tier-1b { background: #fdf2e2; color: #96600e; }
+.wl-tier.tier-2  { background: #eef2f7; color: #5a6b80; }
+
+.wl-weight-name { font-size: 12px; color: #24384f; }
+
+.wl-weight-track {
+  height: 7px;
+  background: #eef2f7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.wl-weight-fill {
+  display: block;
+  height: 100%;
+  background: #1687e8;
+  border-radius: 4px;
+}
+
+.wl-weight-meta { font-size: 11px; color: #8496ab; text-align: right; }
+
+.wl-footnote {
+  font-size: 11px;
+  color: #8496ab;
+  line-height: 1.6;
+  padding: 10px 13px;
+  background: #f4f7fb;
+  border: 1px solid #e2e9f2;
+  border-radius: 7px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .wl-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wl-weight-row { grid-template-columns: 28px 150px minmax(0, 1fr); }
+  .wl-weight-meta { display: none; }
+}
+
+@media (max-width: 620px) {
+  .wl-kpi-grid { grid-template-columns: minmax(0, 1fr); }
+  .wl-header { flex-direction: column; }
+}
+
+/* filter + primary action sit together in the page header */
+.wl-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
