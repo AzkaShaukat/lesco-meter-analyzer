@@ -26,37 +26,6 @@ The **LESCO Meter Data Analyzer** bridges raw telemetry dumps and field operatio
 
 ---
 
-## 🏗️ Architecture
-
-```
-+---------------------------------------------------------------------------------------+
-|                                    USER INTERFACES                                    |
-+--------------------------+-----------------------+------------------------------------+
-| Modern Web Dashboard     | Standalone Desktop GUI| Command-Line Interface (CLI)       |
-| (React 19 + Vite +       | (Python Tkinter /     | (Modular standalone batch scripts: |
-| Tailwind-like Custom CSS)| PyInstaller EXE)      | gap_finder, event_correlator, etc.)|
-+--------------------------+-----------------------+------------------------------------+
-                                      |
-                                      v
-+---------------------------------------------------------------------------------------+
-|                                  FASTAPI WEB SERVICE                                  |
-|          HTTP REST API (api.py) + In-Memory Thread-Safe Job Store (jobs.py)           |
-+---------------------------------------------------------------------------------------+
-                                      |
-                                      v
-+---------------------------------------------------------------------------------------+
-|                               ANALYTICAL PIPELINE CORE                                |
-|  lesco_common | gap_finder | event_correlator | daily_trend | peak_load | theft_screen |
-+---------------------------------------------------------------------------------------+
-                                      |
-                                      v
-+---------------------------------------------------------------------------------------+
-|                               RAW UTILITY DATA EXPORTS                                |
-|   Custom Load Profile (.xlsx/.csv)   |   Custom Meter Events (.xlsx/.csv)             |
-|   Custom Daily Reads (.xlsx/.csv)    |   Custom Instantaneous Reads (.xlsx/.csv)      |
-+---------------------------------------------------------------------------------------+
-```
-
 ### Frontend
 - **Framework**: React 19 with JSX
 - **Build Tool**: Vite 8
